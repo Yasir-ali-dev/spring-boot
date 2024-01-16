@@ -1,10 +1,8 @@
 package com.snow.spring_rest.REST;
 
 import com.snow.spring_rest.Entity.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,18 +19,22 @@ public class StudentRestController {
         list.add(s1); list.add(s2); list.add(s3);
         return list;
     }
+
     @GetMapping("/students/{studentId}")
     Student getStudent (@PathVariable int studentId){
         List<Student> list= new ArrayList<>();
         list.add(new Student("Yasir","Ali"));
         list.add(new Student("Nasir","Ali"));
         list.add(new Student("Hia","Noor"));
+
+        if ( studentId>=list.size() || studentId < 0 ){
+            throw  new StudentNotFoundException("Student Not Found With Id "+studentId );
+        }
         return list.get(studentId);
     }
+
     @GetMapping("/path/{variable}")
     String get(@PathVariable  String variable ){
         return variable;
     }
-
-
 }
