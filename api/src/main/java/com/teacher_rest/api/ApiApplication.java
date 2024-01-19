@@ -18,12 +18,7 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		Teacher teacher = new Teacher("Muhammad","Hussain","hussain@yahoo.com");
-//		createTeacher(teacher);
-//		System.out.println(teacherDAO.findAll());
 
 	}
-	void createTeacher (Teacher teacher){
-		teacherDAO.save(teacher);
-	}
+
 }

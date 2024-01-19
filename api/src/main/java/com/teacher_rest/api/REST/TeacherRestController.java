@@ -38,5 +38,19 @@ public class TeacherRestController {
         return teacherService.save(teacher);
     }
 
+    @PutMapping("/teachers")
+    Teacher update (@RequestBody Teacher theTeacher ){
+        return teacherService.save(theTeacher);
+    }
+
+    @DeleteMapping("/teachers/{id}")
+    Teacher deleteById (@PathVariable int id ){
+        Teacher teacher = teacherService.findById(id);
+        if(teacher == null){
+            throw new RuntimeException("Teacher Not Found With Id"+id);
+        }
+        teacherService.deleteById(id);
+        return  teacher;
+    }
 
 }
