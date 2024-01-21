@@ -19,6 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "employees")
 public class Employee {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "employee_id")
