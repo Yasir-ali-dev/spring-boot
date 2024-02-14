@@ -15,6 +15,9 @@ public class InstructorDetail {
     @Column(name = "hobby")
     private String hobby;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "instructorDetail")
+    private Instructor instructor;
+
     public InstructorDetail(){}
 
     public InstructorDetail( String youtube_channel, String hobby) {
@@ -22,6 +25,13 @@ public class InstructorDetail {
         this.hobby = hobby;
     }
 
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
 
     public int getId() {
         return id;

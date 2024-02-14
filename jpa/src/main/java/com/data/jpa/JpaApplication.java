@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+
 @SpringBootApplication
 public class JpaApplication implements CommandLineRunner {
 
@@ -20,12 +22,13 @@ public class JpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("hi");
+		List<InstructorDetail>  instructorDetails= instrutorDAO.findAllInstructorDetails();
+		instructorDetails.forEach(instructorDetail -> System.out.println(instructorDetail.getInstructor()));
 //		createInstructor();
 //		findInstructor();
 //		deleteInstructor();
-		updateInstructor(5);
-		System.out.println(instrutorDAO.findAll());
+//		updateInstructor(5);
+//		System.out.println(instrutorDAO.findAll());
 	}
 
 	public void updateInstructor (int id){

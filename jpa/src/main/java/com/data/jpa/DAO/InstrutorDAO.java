@@ -1,6 +1,7 @@
 package com.data.jpa.DAO;
 
 import com.data.jpa.Entity.Instructor;
+import com.data.jpa.Entity.InstructorDetail;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface InstrutorDAO {
     void delete (int id);
     List<Instructor> findAll();
     Instructor update (Instructor instructor);
+    InstructorDetail findInstructorDetailById(int id);
+    List<InstructorDetail> findAllInstructorDetails();
 }

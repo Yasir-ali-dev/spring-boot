@@ -1,6 +1,7 @@
 package com.data.jpa.DAO;
 
 import com.data.jpa.Entity.Instructor;
+import com.data.jpa.Entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,18 @@ public class InstrutorDAOImplementation implements InstrutorDAO{
     public void delete(int id) {
         Instructor instructor = entityManager.find(Instructor.class,id);
         entityManager.remove(instructor);
+    }
+
+    @Override
+    public InstructorDetail findInstructorDetailById(int id) {
+        return entityManager.find(InstructorDetail.class,id);
+    }
+
+    @Override
+    public List<InstructorDetail> findAllInstructorDetails() {
+        TypedQuery<InstructorDetail> results = entityManager.createQuery("FROM InstructorDetail", InstructorDetail.class);
+        List<InstructorDetail> instructorDetails = results.getResultList();
+        return  instructorDetails;
     }
 
     @Override
