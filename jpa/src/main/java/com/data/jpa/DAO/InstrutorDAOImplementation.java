@@ -42,4 +42,10 @@ public class InstrutorDAOImplementation implements InstrutorDAO{
         Instructor instructor = entityManager.find(Instructor.class,id);
         entityManager.remove(instructor);
     }
+
+    @Override
+    @Transactional
+    public Instructor update(Instructor instructor) {
+          return entityManager.merge(instructor);
+    }
 }

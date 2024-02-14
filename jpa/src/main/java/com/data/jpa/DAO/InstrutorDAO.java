@@ -9,4 +9,5 @@ public interface InstrutorDAO {
     Instructor findById(int id);
     void delete (int id);
     List<Instructor> findAll();
+    Instructor update (Instructor instructor);
 }

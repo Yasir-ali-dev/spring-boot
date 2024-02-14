@@ -23,8 +23,16 @@ public class JpaApplication implements CommandLineRunner {
 		System.out.println("hi");
 //		createInstructor();
 //		findInstructor();
-		deleteInstructor();
+//		deleteInstructor();
+		updateInstructor(5);
 		System.out.println(instrutorDAO.findAll());
+	}
+
+	public void updateInstructor (int id){
+		Instructor instructor = instrutorDAO.findById(id);
+		instructor.setEmail("khalid@gmail.com");
+		instructor.setLast_name("Hussain Detho");
+		instrutorDAO.update(instructor);
 	}
 	public void findInstructor(){
 		Instructor instructor=instrutorDAO.findById(1);
@@ -37,7 +45,6 @@ public class JpaApplication implements CommandLineRunner {
 		instrutorDAO.save(instructor);
 
 	}
-
 	public void deleteInstructor (){
 		instrutorDAO.delete(4);
 		System.out.println("instructor deleted");
