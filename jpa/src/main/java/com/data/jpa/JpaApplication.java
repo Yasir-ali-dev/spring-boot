@@ -21,14 +21,25 @@ public class JpaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("hi");
-		createInstructor();
-
+//		createInstructor();
+//		findInstructor();
+		deleteInstructor();
+		System.out.println(instrutorDAO.findAll());
+	}
+	public void findInstructor(){
+		Instructor instructor=instrutorDAO.findById(1);
+		System.out.println(instructor.getInstructorDetail());
 	}
 	public void createInstructor(){
-		Instructor instructor = new Instructor("Ghulam","Mujtaba","mujtaba@gmial.com");
-		InstructorDetail instructorDetail = new InstructorDetail("Tech Talk","Leetcode");
+		Instructor instructor = new Instructor("Khalid","Hussain","hussain@gmial.com");
+		InstructorDetail instructorDetail = new InstructorDetail("Web Eng","GYM");
 		instructor.setInstructorDetail(instructorDetail);
 		instrutorDAO.save(instructor);
 
+	}
+
+	public void deleteInstructor (){
+		instrutorDAO.delete(4);
+		System.out.println("instructor deleted");
 	}
 }
