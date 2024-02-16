@@ -2,6 +2,9 @@ package com.data.jpa.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "instructors")
 public class Instructor {
@@ -9,19 +12,17 @@ public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "first_name")
     private String first_name;
-
     @Column(name = "last_name")
     private String last_name;
-
     @Column(name = "email")
     private String email;
-
     @JoinColumn(name = "instructor_detail_id")
     @OneToOne(cascade = CascadeType.ALL)
     private InstructorDetail instructorDetail;
+    @OneToMany(mappedBy = "instructor", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Course> courses;
 
     public Instructor(){}
 
@@ -29,6 +30,23 @@ public class Instructor {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
+    }
+
+    // add convenience methods for bi-directional relationship
+    public void add (Course tempCourse){
+        if(courses == null){
+            courses = new ArrayList<>();
+        }
+        courses.add(tempCourse);
+        tempCourse.setInstructor(this);
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     public void setInstructorDetail(InstructorDetail instructorDetail) {

@@ -22,8 +22,10 @@ public class JpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<InstructorDetail>  instructorDetails= instrutorDAO.findAllInstructorDetails();
-		instructorDetails.forEach(instructorDetail -> System.out.println(instructorDetail.getInstructor()));
+//		List<InstructorDetail>  instructorDetails= instrutorDAO.findAllInstructorDetails();
+//		instructorDetails.forEach(instructorDetail -> System.out.println(instructorDetail.getInstructor()));
+//
+
 //		createInstructor();
 //		findInstructor();
 //		deleteInstructor();

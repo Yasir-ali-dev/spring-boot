@@ -56,6 +56,7 @@ public class InstrutorDAOImplementation implements InstrutorDAO{
         return  instructorDetails;
     }
 
+
     @Override
     @Transactional
     public Instructor update(Instructor instructor) {

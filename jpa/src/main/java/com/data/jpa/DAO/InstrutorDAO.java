@@ -11,6 +11,8 @@ public interface InstrutorDAO {
     void delete (int id);
     List<Instructor> findAll();
     Instructor update (Instructor instructor);
+
     InstructorDetail findInstructorDetailById(int id);
     List<InstructorDetail> findAllInstructorDetails();
 }
+
