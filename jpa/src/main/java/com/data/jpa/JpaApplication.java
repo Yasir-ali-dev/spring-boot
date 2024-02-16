@@ -46,7 +46,11 @@ public class JpaApplication implements CommandLineRunner {
 	public void findInstructor(){
 		Instructor instructor=instrutorDAO.findById(8);
 		System.out.println("instructor :"+instructor);
-		System.out.println("instrutor courses"+instructor.getCourses());
+
+		List<Course> courses= instrutorDAO.findCoursesByInstructorId(8);
+
+		instructor.setCourses(courses);
+		System.out.println("courses: "+instructor.getCourses());
 	}
 	public void createInstructor(){
 		Instructor instructor = new Instructor("Danyal","Channa","danyal@gmial.com");

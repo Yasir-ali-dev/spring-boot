@@ -59,7 +59,9 @@ public class InstrutorDAOImplementation implements InstrutorDAO{
 
     @Override
     public List<Course> findCoursesByInstructorId(int id) {
-
+        TypedQuery<Course> results = entityManager.createQuery("FROM Course WHERE instructor.id=:theId", Course.class);
+        results.setParameter("theId",id);
+        return results.getResultList();
     }
 
     @Override
