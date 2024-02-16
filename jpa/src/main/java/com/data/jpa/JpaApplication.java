@@ -1,6 +1,7 @@
 package com.data.jpa;
 
 import com.data.jpa.DAO.InstrutorDAO;
+import com.data.jpa.Entity.Course;
 import com.data.jpa.Entity.Instructor;
 import com.data.jpa.Entity.InstructorDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,14 @@ public class JpaApplication implements CommandLineRunner {
 //		instructorDetails.forEach(instructorDetail -> System.out.println(instructorDetail.getInstructor()));
 //
 
-//		createInstructor();
-//		findInstructor();
-//		deleteInstructor();
-//		updateInstructor(5);
-//		System.out.println(instrutorDAO.findAll());
+
+		createInstructor();
+		/*
+		findInstructor();
+		deleteInstructor();
+		updateInstructor(5);
+		System.out.println(instrutorDAO.findAll());
+		*/
 	}
 
 	public void updateInstructor (int id){
@@ -44,9 +48,15 @@ public class JpaApplication implements CommandLineRunner {
 		System.out.println(instructor.getInstructorDetail());
 	}
 	public void createInstructor(){
-		Instructor instructor = new Instructor("Khalid","Hussain","hussain@gmial.com");
-		InstructorDetail instructorDetail = new InstructorDetail("Web Eng","GYM");
+		Instructor instructor = new Instructor("Safi","Hassan","saif@gmial.com");
+		InstructorDetail instructorDetail = new InstructorDetail("Data Structure","Problem Solving");
 		instructor.setInstructorDetail(instructorDetail);
+
+		Course course1 = new Course("Data Structure");
+		Course course2 = new Course("Data Analysis");
+		instructor.add(course1);
+		instructor.add(course2);
+
 		instrutorDAO.save(instructor);
 
 	}

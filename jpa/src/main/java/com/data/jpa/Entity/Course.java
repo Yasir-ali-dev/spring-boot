@@ -7,25 +7,25 @@ import jakarta.persistence.*;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @Column(name = "course_id")
+    private int id;
     @Column(name = "title", nullable = false,unique = true)
     private String title;
 
     @JoinColumn(name = "instructor_id")
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private Instructor instructor;
 
     public Course(){}
-    public Course(String title, Instructor instructor) {
+    public Course(String title ) {
         this.title = title;
-        this.instructor = instructor;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
