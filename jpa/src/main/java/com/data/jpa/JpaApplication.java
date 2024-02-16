@@ -27,8 +27,8 @@ public class JpaApplication implements CommandLineRunner {
 //		instructorDetails.forEach(instructorDetail -> System.out.println(instructorDetail.getInstructor()));
 //
 
-
-		createInstructor();
+		findInstructor();
+//		createInstructor();
 		/*
 		findInstructor();
 		deleteInstructor();
@@ -44,21 +44,20 @@ public class JpaApplication implements CommandLineRunner {
 		instrutorDAO.update(instructor);
 	}
 	public void findInstructor(){
-		Instructor instructor=instrutorDAO.findById(1);
-		System.out.println(instructor.getInstructorDetail());
+		Instructor instructor=instrutorDAO.findById(8);
+		System.out.println("instructor :"+instructor);
+		System.out.println("instrutor courses"+instructor.getCourses());
 	}
 	public void createInstructor(){
-		Instructor instructor = new Instructor("Safi","Hassan","saif@gmial.com");
-		InstructorDetail instructorDetail = new InstructorDetail("Data Structure","Problem Solving");
+		Instructor instructor = new Instructor("Danyal","Channa","danyal@gmial.com");
+		InstructorDetail instructorDetail = new InstructorDetail("Nursing with Danyal","Caring");
 		instructor.setInstructorDetail(instructorDetail);
 
-		Course course1 = new Course("Data Structure");
-		Course course2 = new Course("Data Analysis");
+		Course course1 = new Course("Nursing");
+		Course course2 = new Course("Biology");
 		instructor.add(course1);
 		instructor.add(course2);
-
 		instrutorDAO.save(instructor);
-
 	}
 	public void deleteInstructor (){
 		instrutorDAO.delete(4);

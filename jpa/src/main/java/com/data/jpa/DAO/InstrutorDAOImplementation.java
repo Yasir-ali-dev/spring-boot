@@ -1,5 +1,6 @@
 package com.data.jpa.DAO;
 
+import com.data.jpa.Entity.Course;
 import com.data.jpa.Entity.Instructor;
 import com.data.jpa.Entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
@@ -56,6 +57,10 @@ public class InstrutorDAOImplementation implements InstrutorDAO{
         return  instructorDetails;
     }
 
+    @Override
+    public List<Course> findCoursesByInstructorId(int id) {
+
+    }
 
     @Override
     @Transactional
